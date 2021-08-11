@@ -5,9 +5,10 @@ const port = process.env.PORT || 3000;
 const { exec } = require("child_process");
 const { Telegraf } = require("telegraf");
 
+exec("chmod +777 ./youtube-dl");
 const getThumbnail = (url) => {
     return new Promise((resolve, reject) => {
-        exec(`youtube-dl --get-thumbnail ${url}`, (err, stdout, stderr) => {
+        exec(`./youtube-dl --get-thumbnail ${url}`, (err, stdout, stderr) => {
             if (err) {
                 reject(err);
             }
